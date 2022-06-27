@@ -13,6 +13,7 @@
     "content-type": "^1.0.4",
     "cookie": "^0.5.0",
     "cookie-signature": "^1.0.6",
+    "cors": "^2.8.5",
     "debug": "^2.6.9",
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
@@ -62,7 +63,8 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -74,5 +76,8 @@
   "bugs": {
     "url": "https://github.com/LabuPaim/api__el-geladon/issues"
   },
-  "homepage": "https://github.com/LabuPaim/api__el-geladon#readme"
+  "homepage": "https://github.com/LabuPaim/api__el-geladon#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
 }
