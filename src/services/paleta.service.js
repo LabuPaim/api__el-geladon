@@ -1,52 +1,27 @@
-const paletas = [
-  {
-    id: 1,
-    sabor: 'Açaí com Leite Condensado',
-    descricao: 'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
-    foto: 'assets/images/acai-com-leite-condensado.png',
-    preco: 10.0,
-  },
-  {
-    id: 2,
-    sabor: 'Banana com Nutella',
-    descricao: 'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
-    foto: 'assets/images/banana-com-nutella.png',
-    preco: 10.0,
-  },
-  {
-    id: 3,
-    sabor: 'Chocolate Belga',
-    descricao: 'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
-    foto: 'assets/images/chocolate-belga.png',
-    preco: 7.0,
-  },
-];
+const Paletas = require('../model/Paleta');
 
-const find__paletas__service__ALL = () => {
+const find__paletas__service__ALL = async () => {
+  const paletas = await Paletas.find();
   return paletas;
 };
 
-const find__paletas__service__BY_ID = (id) => {
-  return paletas.find((paleta) => paleta.id == id);
+const find__paletas__service__BY_ID = async (id) => {
+  const paletas = await Paletas.findById(id);
+  return paletas;
 };
 
-const create__paleta__SERVICE = (paleta__NEW) => {
-  const new__ID = paletas.length + 1;
-  paleta__NEW.id = new__ID;
-  paletas.push(paleta__NEW);
-  return paleta__NEW;
+const create__paleta__SERVICE = async (paleta__NEW) => {
+  const paleta__CREATE = await Paletas.create(paleta__NEW);
+  return paleta__CREATE;
 };
 
-const update__paleta__SERVICE = (id, paleta__EDITED) => {
-  paleta__EDITED['id'] = id;
-  const paleta__INDEX = paletas.findIndex((paleta) => paleta.id == id);
-  paletas[paleta__INDEX] = paleta__EDITED;
-  return paleta__EDITED;
+const update__paleta__SERVICE = async (id, paleta__EDITED) => {
+  const paleta__UPDATE = await Paletas.findByIdAndUpdate(id, paleta__EDITED);
+  return paleta__UPDATE;
 };
 
-const delete__paleta__SERVICE = (id) => {
-  const paleta__INDEX = paletas.findIndex((paleta) => paleta.id == id);
-  return paletas.splice(paleta__INDEX, 1);
+const delete__paleta__SERVICE = async (id) => {
+  return await Paletas.findByIdAndDelete(id);
 };
 
 module.exports = {
